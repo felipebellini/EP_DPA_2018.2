@@ -3,9 +3,9 @@ cardapio = {'banana': '3.50'}
 e = 1
 controle1 = [0, 1, 2, 3, 4]
 controle2 = [0, 1, 2, 3, 4, 5, 6]
-
+choice = int(input("Faça sua escolha:  "))
 #
-while e != 0:
+while choice != 0:
     lista1 = []
     for a in lista1:
         print(a)
@@ -75,3 +75,4 @@ while e != 0:
             elif controle_de_comandas == 4:
                 for c in cardapio[escolhas_comandas]['Quantidade']:
                     print("{0}:{1}".format(c, cardapio[escolhas_comandas][c]))
+print("Até mais!")

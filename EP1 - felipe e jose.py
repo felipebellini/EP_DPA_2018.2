@@ -12,8 +12,8 @@ import json
 comanda = {}
 
 
-with open( "cardapio.json", "r") as cardapio_json:
-    cardapio = json.loads(cardapio_json.read())
+with open("cardapio.json", "r") as arquivo:
+    cardapio = json.loads(arquivo.read())
 
 print("""
 0 - Alterar cardápio
@@ -138,7 +138,6 @@ if escolha == 0:
         
         with open ("cardapio.json","w") as fim:
             cardapio_final = json.dumps(cardapio, sort_keys= True, indent=4)
-            fim.write(cardapio)
     
 # Alterar comanda
 if escolha == 1:

@@ -6,10 +6,14 @@ Created on Sun Sep 23 12:17:07 2018
 @author: joseantonio
 """
 
+
+import json
+
 comanda = {}
 
-cardapio = {'banana': '3.50', 'iphone':'10000'}
 
+with open( "cardapio.json", "r") as cardapio_json:
+    cardapio = json.loads(cardapio_json.read())
 
 print("""
 0 - Alterar cardápio
@@ -131,7 +135,10 @@ if escolha == 0:
             for c in cardapio: 
                 print("{0}" "(R$" "{1:.2f}" ")".format(c, float(cardapio[c])))
                 print("")
-
+        
+        with open ("cardapio.json","w") as fim:
+            cardapio_final = json.dumps(cardapio, sort_keys= True, indent=4)
+            fim.write(cardapio)
     
 # Alterar comanda
 if escolha == 1:

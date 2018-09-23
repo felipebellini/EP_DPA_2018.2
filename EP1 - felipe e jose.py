@@ -21,11 +21,11 @@ escolha = int(input("O que deseja alterar?:  "))
 # Alterar cardápio
 if escolha == 0:
     print("""
-    0 - Sair
-    1 - Imprimir cardápio 
-    2 - Adicionar item
-    3 - Remover item
-    4 - Alterar item
+0 - Sair
+1 - Imprimir cardápio 
+2 - Adicionar item
+3 - Remover item
+4 - Alterar item
     """)
     escolha_menu = int(input("Faça sua escolha:  "))
     
@@ -52,14 +52,86 @@ if escolha == 0:
             # Printando o cardápio após alteração
             print("")
             print("O cardápio possui os seguintes itens: ")
+            print("")
             for c in cardapio: 
                 print("{0}" "(R$" "{1:.2f}" ")".format(c, float(cardapio[c])))
                 print("")
+
+    # Remover item
+    elif escolha_menu == 3: 
+        # Imprimindo o cardápio
+        print("O cardápio possui os seguintes itens: ")
+        print("")
+        for c in cardapio: 
+            print("{0}" "(R$" "{1:.2f}" ")".format(c, float(cardapio[c])))
+            print("")
+        # Perguntando item a ser removido
+        item = input("Digite o item a ser removido:  ")
+        
+        if item not in cardapio:
+            print("Item não está no cardápio")
+            print("")
+            # Impirimindo o cardápio
+            print("O cardápio possui os seguintes itens: ")
+            print("")
+            for c in cardapio: 
+                print("{0}" "(R$" "{1:.2f}" ")".format(c, float(cardapio[c])))
+                print("")
+            item = input("Digite o item a ser removido:  ")
+            del cardapio[item]
             
+        elif item in cardapio:
+            del cardapio[item]
+            print("O cardápio possui os seguintes itens: ")
+            print("")
+            for c in cardapio: 
+                print("{0}" "(R$" "{1:.2f}" ")".format(c, float(cardapio[c])))
+                print("")
+    # Alterar item            
+    elif escolha_menu == 4:
+        print("O cardápio possui os seguintes itens: ")
+        print("")
+        for c in cardapio: 
+            print("{0}" "(R$" "{1:.2f}" ")".format(c, float(cardapio[c])))
+            print("")
+        # Perguntando item a ser alterado
+        item = input("Digite o item a ser alterado:  ")
         
+        if item not in cardapio:
+            print("Item não está no cardápio!")
+            print("")
+            # Impirimindo o cardápio
+            print("Escolha apensa itens do cardápio: ")
+            print("")
+            for c in cardapio: 
+                print("{0}" "(R$" "{1:.2f}" ")".format(c, float(cardapio[c])))
+                print("")
+            item = input("Digite o item a ser alterado:  ")
+            novo_valor = float(input("Digite o novo valor:  "))
+            # Deletando o preço antigo
+            del cardapio[item]
+            # Adicionando o preço novo
+            cardapio[item] = novo_valor
+            # Imprimindo o cardápio alterado
+            print("O novo cardápio possui os seguintes itens: ")
+            print("")
+            for c in cardapio: 
+                print("{0}" "(R$" "{1:.2f}" ")".format(c, float(cardapio[c])))
+                print("")
         
-        
-    
+        elif item in cardapio:
+            novo_valor = float(input("Digite o novo valor:  "))
+            # Deletando o preço antigo
+            del cardapio[item]
+            # Adicionando o preço novo
+            cardapio[item] = novo_valor
+            # Imprimindo o cardápio alterado
+            print("O novo cardápio possui os seguintes itens: ")
+            print("")
+            for c in cardapio: 
+                print("{0}" "(R$" "{1:.2f}" ")".format(c, float(cardapio[c])))
+                print("")
+
     
 # Alterar comanda
 if escolha == 1:
@@ -84,6 +156,7 @@ if escolha == 1:
     elif choice == 1:
         print("")
         print("O cardápio possui os seguintes itens: ")
+        print("")
         for c in cardapio: 
             print("{0}" "(R$" "{1:.2f}" ")".format(c, float(cardapio[c])))
             print("")

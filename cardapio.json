@@ -1,9 +1,7 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Sep 23 18:54:05 2018
-
-@author: joseantonio
-"""
-
- {'banana': '3.50', 'iphone':'10000'}
+{
+    "item 1": 3.14,
+    "item 2": 3.14,
+    "item 3": 3.14,
+    "item 4": 3.14,
+    "item 5": 3.14
+}

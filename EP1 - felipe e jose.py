@@ -210,7 +210,7 @@ while escolha == 1:
                 quantidade = int(input("Digite a quantidade a remover:  "))
 
             comanda[produto][0] -= quantidade
-            print("Quantidade atual de {0}: {1}".format(produto, comanda[produto]))
+            print("Quantidade atual de {0}: {1}".format(produto, comanda[produto][0]))
             if comanda[produto][0] == 0:
                 print("Removendo {0} da comanda...".format(produto))
                 del comanda[produto]
@@ -220,9 +220,12 @@ while escolha == 1:
         for c in comanda:
             print("")
             print("Nome do produto: {0}".format(c))
+            print("")
             print("Quantidade inicial: {0}".format(comanda[c][0]))
+            print("")
             print("Preço unitário: R${0:.2f}".format(cardapio[c]))
+            print("")
             print("Total: R${0:.2f}".format(cardapio[c]*comanda[c][0]))
             print("")
-
+            print("Total (c/ 10%):{0:.2f}".format(cardapio[c]*comanda[c][0]*1.1))
 print("Até mais!")

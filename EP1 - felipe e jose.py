@@ -1,21 +1,23 @@
 import json
 
-comanda = {}
+comanda1 = {}
+lis_comandas=[]
 
 
 with open("cardapio.json", "r") as arquivo:
     cardapio = json.loads(arquivo.read())
 
 print("""
-0 - Alterar cardápio
-1 - Alterar comanda
-2 - Sair
+0 - Sair
+1 - Alterar cardápio
+2 - Alterar comanda
+
 """)
 
 escolha = int(input("O que deseja alterar?:  "))
 
 # Alterar cardápio
-while escolha == 0:
+while escolha == 1:
     print("""
 0 - Sair
 1 - Imprimir cardápio
@@ -145,87 +147,151 @@ while escolha == 0:
 
 #=##########################################################################################################
 
-# Alterar comanda
-while escolha == 1:
-
+# Alterar comandas
+while escolha == 2:
+    
     print("""
-    0 - Sair
-    1 - Imprimir cardápio
-    2 - Adicionar item
-    3 - Remover item
+    0 - Sair      
+    1 - Adicionar comanda
+    2 - Remover comanda
+    3 - Editar comanda 
     4 - Imprimir comanda
     """)
-
-    choice = int(input("Faça sua escolha:  "))
-
-
+    escolha_comandas = int(input("Faça sua escolha:  "))
+    
     # Sair
-    if choice == 0:
-        print("")
-        print("Até mais!")
-
-    # Imprimir cardápio
-    elif choice == 1:
-        print("")
-        print("O cardápio possui os seguintes itens: ")
-        print("")
-        for c in cardapio:
-            print("{0}" "(R$" "{1:.2f}" ")".format(c, float(cardapio[c])))
-            print("")
-
-    # Adicionar item
-    elif choice == 2:
-        print("")
-        produto = input("Digite o nome do produto:  ")
-        if produto in cardapio:
-            quantidade = int(input("Digite a quantidade de produtos:  "))
-            if quantidade < 0:
-                print("Não é possivel adicionar quantidades negativas")
-                quantidade = int(input("Digite a quantidade de produtos:  "))
-
-            if produto in comanda:
-                comanda[produto][0] += quantidade
-                print("Quantidade atual de {0}: {1}".format(produto, comanda[produto]))
-
-            elif produto not in comanda:
-                comanda[produto] = [quantidade, cardapio[produto]]
-                print("Quantidade atual de {0}: {1}".format(produto, comanda[produto][0]))
-        elif produto not in cardapio:
-            print("O item {0} não está no cardápio".format(produto))
-
-    # Remover item
-    elif choice == 3:
-        print("")
-        produto = input("Digite o nome do produto:  ")
-        quantidade = int(input("Digite a quantidade a remover:  "))
-
-        if quantidade < 0:
-            print("Não é possivel remover quantidades negativas")
-            quantidade = int(input("Digite a quantidade a remover:  "))
-
-        if produto in comanda:
-            if quantidade > comanda[produto][0]:
-                print("Não é possível remover mais do que a quantidade presente na comanda")
-                print("Máximo a ser removido: {0}".format(comanda[produto]))
-                quantidade = int(input("Digite a quantidade a remover:  "))
-
-            comanda[produto][0] -= quantidade
-            print("Quantidade atual de {0}: {1}".format(produto, comanda[produto][0]))
-            if comanda[produto][0] == 0:
-                print("Removendo {0} da comanda...".format(produto))
-                del comanda[produto]
-
+    if escolha_comandas == 0:
+        escolha = None
+    
+    # Adicionar comanda nova 
+    elif escolha_comandas == 1:
+        com = input("Digite o nome da comanda a ser adicionada:  ")
+        if com not in lis_comandas:
+            com = {}
+            lis_comandas.append(com)
+            print("Comanda adicionada com sucesso!")
+        
+        elif com in lis_comandas:
+            print("{0} já está no sistema!".format(com))
+        
+    # Remover comanda
+    elif escolha_comandas == 2:
+        com = input("Digite o nome da comanda a ser removida:  ")
+        if com not in lis_comandas:
+            print("Comanda não está no sistema!")
+        
+        elif com in lis_comandas:
+            for i in lis_comandas:
+                if i == com:
+                    lis_comandas.remove(i)
+                    print("Comanda removida com sucesso!")
+                
+    # Editar comanda 
+    elif escolha_comandas == 3:
+        com = input("Digite o nome da comanda a ser editada:  ")
+        if com not in lis_comandas:
+            print("Comanda não está no sistema!")
+            escolha_comandas = None
+        
+        elif com in lis_comandas:
+            for i in lis_comandas:
+                if i == com:
+                    comanda = i
+                    
     # Imprimir comanda
-    elif choice == 4:
-        for c in comanda:
+    elif escolha_comandas == 4:  
+        com = input("Digite o nome da comanda a ser impressa:  ")
+        if com not in lis_comandas:
+            print("Comanda não está no sistema!")
+         
+        elif com in lis_comandas:
+            comanda = com
+            print("Imprimindo {0}...".format(com))
+            choice = 4
+            
+                            
+            
+            
+                 
+    while escolha_comandas == 3:
+        print("""
+        0 - Sair
+        1 - Imprimir cardápio
+        2 - Adicionar item
+        3 - Remover item
+        4 - Imprimir comanda
+        """)
+    
+        choice = int(input("Faça sua escolha:  "))
+    
+    
+        # Sair
+        if choice == 0:
             print("")
-            print("Nome do produto: {0}".format(c))
+            print("Até mais!")
+    
+        # Imprimir cardápio
+        elif choice == 1:
             print("")
-            print("Quantidade inicial: {0}".format(comanda[c][0]))
+            print("O cardápio possui os seguintes itens: ")
             print("")
-            print("Preço unitário: R${0:.2f}".format(cardapio[c]))
+            for c in cardapio:
+                print("{0}" "(R$" "{1:.2f}" ")".format(c, float(cardapio[c])))
+                print("")
+    
+        # Adicionar item
+        elif choice == 2:
             print("")
-            print("Total: R${0:.2f}".format(cardapio[c]*comanda[c][0]))
+            produto = input("Digite o nome do produto:  ")
+            if produto in cardapio:
+                quantidade = int(input("Digite a quantidade de produtos:  "))
+                if quantidade < 0:
+                    print("Não é possivel adicionar quantidades negativas")
+                    quantidade = int(input("Digite a quantidade de produtos:  "))
+    
+                if produto in comanda:
+                    comanda[produto][0] += quantidade
+                    print("Quantidade atual de {0}: {1}".format(produto, comanda[produto]))
+    
+                elif produto not in comanda:
+                    comanda[produto] = [quantidade, cardapio[produto]]
+                    print("Quantidade atual de {0}: {1}".format(produto, comanda[produto][0]))
+            elif produto not in cardapio:
+                print("O item {0} não está no cardápio".format(produto))
+    
+        # Remover item
+        elif choice == 3:
             print("")
-            print("Total (c/ 10%):{0:.2f}".format(cardapio[c]*comanda[c][0]*1.1))
-print("Até mais!")
+            produto = input("Digite o nome do produto:  ")
+            quantidade = int(input("Digite a quantidade a remover:  "))
+    
+            if quantidade < 0:
+                print("Não é possivel remover quantidades negativas")
+                quantidade = int(input("Digite a quantidade a remover:  "))
+    
+            if produto in comanda:
+                if quantidade > comanda[produto][0]:
+                    print("Não é possível remover mais do que a quantidade presente na comanda")
+                    print("Máximo a ser removido: {0}".format(comanda[produto]))
+                    quantidade = int(input("Digite a quantidade a remover:  "))
+    
+                comanda[produto][0] -= quantidade
+                print("Quantidade atual de {0}: {1}".format(produto, comanda[produto][0]))
+                if comanda[produto][0] == 0:
+                    print("Removendo {0} da comanda...".format(produto))
+                    del comanda[produto]
+    
+        # Imprimir comanda
+        elif choice == 4:
+            for c in comanda:
+                print("")
+                print("Nome do produto: {0}".format(c))
+                print("")
+                print("Quantidade inicial: {0}".format(comanda[c][0]))
+                print("")
+                print("Preço unitário: R${0:.2f}".format(cardapio[c]))
+                print("")
+                print("Total: R${0:.2f}".format(cardapio[c]*comanda[c][0]))
+                print("")
+                print("Total (c/ 10%):{0:.2f}".format(cardapio[c]*comanda[c][0]*1.1))
+    print("Até mais!")

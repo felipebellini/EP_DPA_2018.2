@@ -227,10 +227,7 @@ while escolha == 2:
         choice = int(input("Faça sua escolha:  "))
         
         if choice == 0:
-            escolha = 0
-        
-        
-        
+            break        
         # Imprimir cardápio
         elif choice == 1:
             print("")
@@ -270,7 +267,7 @@ while escolha == 2:
                 print("Não é possivel remover quantidades negativas")
                 quantidade = int(input("Digite a quantidade a remover:  "))
     
-            if produto in comanda:
+            if produto in comandas[comanda]:
                 if quantidade > comandas[comanda][produto][0]:
                     print("Não é possível remover mais do que a quantidade presente na comanda")
                     print("Máximo a ser removido: {0}".format(comandas[comanda][produto]))
@@ -297,7 +294,7 @@ while escolha == 2:
                 total += cardapio[c]*comandas[comanda][c][0]
             print("Total: R${0:.2f}".format(total))
             print("")
-            print("Total (c/ 10%):{0:.2f}".format(total*1.1))
+            print("Total (c/ 10%): R${0:.2f}".format(total*1.1))
                 
      
 

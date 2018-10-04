@@ -285,6 +285,7 @@ while escolha == 2:
     
         # Imprimir comanda
         elif choice == 4:
+            total = 0
             for c in comandas[comanda]:
                 print("")
                 print("Nome do produto: {0}".format(c))
@@ -293,9 +294,10 @@ while escolha == 2:
                 print("")
                 print("Preço unitário: R${0:.2f}".format(cardapio[c]))
                 print("")
-                print("Total: R${0:.2f}".format(cardapio[c]*comandas[comanda][c][0]))
-                print("")
-                print("Total (c/ 10%):{0:.2f}".format(cardapio[c]*comandas[comanda][c][0]*1.1))
+                total += cardapio[c]*comandas[comanda][c][0]
+            print("Total: R${0:.2f}".format(total))
+            print("")
+            print("Total (c/ 10%):{0:.2f}".format(total*1.1))
                 
      
 

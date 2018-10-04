@@ -276,7 +276,7 @@ while escolha == 2:
                     print("Máximo a ser removido: {0}".format(comandas[comanda][produto]))
                     quantidade = int(input("Digite a quantidade a remover:  "))
                 
-                if quantidade < comandas[comanda][produto][0]:
+                if quantidade <= comandas[comanda][produto][0]:
                     comandas[comanda][produto][0] -= quantidade
                     print("Quantidade atual de {0}: {1}".format(produto, comandas[comanda][produto][0]))
             if comandas[comanda][produto][0] == 0:

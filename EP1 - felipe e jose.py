@@ -295,12 +295,10 @@ while escolha == 2:
                     print("")
                     print("Total (c/ 10%):{0:.2f}".format(cardapio[c]*comandas[comanda][c][0]*1.1))
                     
-    with open ("comandas.json","w") as arquivo:
-            json.dumps(comandas, arquivo, sort_keys= True, indent=4)                
+         
     
     escolha = 0
     
-    
-if escolha == 0:
-    print("Até mais!")    
-print("Até mais!")
+with open ("comandas.json","w") as arquivo:
+    json.dumps(comandas, arquivo, sort_keys= True, indent=4)              
+  

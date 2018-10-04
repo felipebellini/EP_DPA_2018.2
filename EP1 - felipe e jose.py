@@ -1,11 +1,13 @@
 import json
 
-
-comandas = {}
-
-
 with open("cardapio.json", "r") as arquivo:
     cardapio = json.loads(arquivo.read())
+
+
+with open("comandas.json", "r") as arquivo:
+    comandas = json.loads(arquivo.read())
+
+
 
 print("""
 0 - Sair
@@ -147,8 +149,7 @@ while escolha == 1:
 print("Até mais!")
 
 ###########################################################################################################
-with open("comandas.json", "r") as arquivo:
-    comandas = json.loads(arquivo.read())
+
 
 
 # Alterar comandas

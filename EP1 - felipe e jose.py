@@ -227,7 +227,8 @@ while escolha == 2:
         choice = int(input("Faça sua escolha:  "))
         
         if choice == 0:
-            break        
+            escolha = 0
+            escolha_comandas = 0        
         # Imprimir cardápio
         elif choice == 1:
             print("")
